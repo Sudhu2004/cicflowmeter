@@ -263,16 +263,17 @@ class FlowBytes:
                 )
         return 0
 
+
     def get_bulk_rate(self, packet_direction):
         if packet_direction == PacketDirection.FORWARD:
-            if self.feature.forward_bulk_count != 0:
+            if self.feature.forward_bulk_duration != 0:  # Check if denominator is not zero
                 return (
                     self.feature.forward_bulk_size / self.feature.forward_bulk_duration
                 )
         else:
-            if self.feature.backward_bulk_count != 0:
+            if self.feature.backward_bulk_duration != 0:  # Check if denominator is not zero
                 return (
-                    self.feature.backward_bulk_size
-                    / self.feature.backward_bulk_duration
+                    self.feature.backward_bulk_size / self.feature.backward_bulk_duration
                 )
         return 0
+
