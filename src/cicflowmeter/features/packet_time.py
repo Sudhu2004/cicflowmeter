@@ -61,15 +61,16 @@ class PacketTime:
         return relative_time_list
 
     def get_time_stamp(self):
-        """Returns the date and time in a human readeable format.
-
+        """Returns the date and time in a human readable format.
+    
         Return (str):
             String of Date and time.
-
+    
         """
-        time = self.flow.packets[0][0].time
+        time = float(self.flow.packets[0][0].time)  # Convert EDecimal to float
         date_time = datetime.fromtimestamp(time).strftime("%Y-%m-%d %H:%M:%S")
         return date_time
+
 
     def get_duration(self):
         """Calculates the duration of a network flow.
